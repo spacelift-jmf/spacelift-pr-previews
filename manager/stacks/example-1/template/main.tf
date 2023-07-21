@@ -60,7 +60,7 @@ resource "spacelift_stack_destructor" "example_1" {
 
 resource "spacelift_environment_variable" "environment" {
   name       = "TF_VAR_environment"
-  stack_id   = spacelift_stack.example.id
+  stack_id   = spacelift_stack.example_1.id
   value      = var.environment
   write_only = false
 }

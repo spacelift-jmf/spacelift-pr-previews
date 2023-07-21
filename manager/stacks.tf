@@ -1,7 +1,7 @@
 module "example_1" {
   source = "./stacks/example-1"
 
-  push_policy_id = spacelift_policy.push_policy.id
+  push_policy_id = spacelift_policy.push.id
 
   # aws_role            = var.aws_role
   current_stack_id    = var.spacelift_stack_id
