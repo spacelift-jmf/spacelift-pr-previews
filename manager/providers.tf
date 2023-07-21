@@ -5,10 +5,10 @@ terraform {
     #   version = "~> 5.0"
     # }
 
-    # spacelift = {
-    #   source  = "spacelift-io/spacelift"
-    #   version = "~> 1.1"
-    # }
+    spacelift = {
+      source  = "spacelift-io/spacelift"
+      version = "~> 1.1"
+    }
   }
 }
 
@@ -22,4 +22,4 @@ terraform {
 #   alias  = "us-east-1"
 # }
 
-# provider "spacelift" {}
+provider "spacelift" {}
