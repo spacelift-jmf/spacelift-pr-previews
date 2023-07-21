@@ -22,7 +22,7 @@ resource "spacelift_stack_destructor" "example_1" {
     spacelift_environment_variable.environment,
     spacelift_policy_attachment.push,
   ]
-  stack_id = spacelift_stack.hello-service.id
+  stack_id = spacelift_stack.example_1.id
 }
 
 # resource "spacelift_aws_role" "hello-service" {

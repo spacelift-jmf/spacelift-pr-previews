@@ -4,14 +4,14 @@ module "example_1" {
   push_policy_id = spacelift_policy.push.id
 
   # aws_role            = var.aws_role
-  current_stack_id    = var.spacelift_stack_id
+  current_stack_id = var.spacelift_stack_id
   # domain_name         = "hello-service.preview-environments.${var.domain_name}"
   # domain_name_zone_id = data.aws_route53_zone.liftspace.zone_id
 
   providers = {
-  #   aws.eu-west-1 = aws.eu-west-1
-  #   aws.us-east-1 = aws.us-east-1
-    spacelift     = spacelift
+    #   aws.eu-west-1 = aws.eu-west-1
+    #   aws.us-east-1 = aws.us-east-1
+    spacelift = spacelift
   }
 }
 

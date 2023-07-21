@@ -4,7 +4,7 @@ module "previews" {
   # aws_role         = var.aws_role
   # certificate_arn  = aws_acm_certificate.endpoint-certificate.arn
   # domain_name      = var.domain_name
-  push_policy_id   = var.push_policy_id
+  push_policy_id = var.push_policy_id
 
   providers = {
     spacelift = spacelift

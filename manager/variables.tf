@@ -6,5 +6,5 @@
 
 variable "spacelift_stack_id" {
   default = "dummy"
-  type = string
+  type    = string
 }

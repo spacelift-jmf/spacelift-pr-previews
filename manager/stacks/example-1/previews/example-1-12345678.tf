@@ -7,8 +7,8 @@ module "example_1_12345678" {
   # certificate_arn         = var.certificate_arn
   # code_version            = "latest"
   # domain_name             = var.domain_name
-  environment             = "12345678"
-  push_policy_id          = var.push_policy_id
+  environment    = "12345678"
+  push_policy_id = var.push_policy_id
 
   providers = {
     spacelift = spacelift
