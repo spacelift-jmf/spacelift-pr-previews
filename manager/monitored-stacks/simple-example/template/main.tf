@@ -15,7 +15,7 @@ resource "spacelift_run" "preview" {
   stack_id = spacelift_stack.preview.id
 
   keepers = {
-    branch     = va.branch
+    branch     = var.branch
     preview_id = var.preview_id
   }
 }
