@@ -4,14 +4,23 @@ resource "spacelift_stack" "preview" {
   branch                       = var.branch
   github_action_deploy         = false
   labels                       = ["pr-preview"]
-  name                         = "Demo Preview Environments Example 1 ${var.preview_id}"
+  name                         = "PR Preview - Example 1 ${var.preview_id}"
   project_root                 = "simple-example/"
   repository                   = "spacelift-pr-previews-example"
   space_id                     = "legacy"
   terraform_smart_sanitization = true
 }
 
-resource "spacelift_stack_destructor" "example_1" {
+resource "spacelift_run" "preview" {
+  stack_id = spacelift_stack.preview.id
+
+  keepers = {
+    branch     = va.branch
+    preview_id = var.preview_id
+  }
+}
+
+resource "spacelift_stack_destructor" "preview" {
   stack_id = spacelift_stack.preview.id
 
   depends_on = [
