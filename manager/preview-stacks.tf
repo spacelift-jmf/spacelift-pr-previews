@@ -1,23 +1,17 @@
-# TODO: Dynamically list the monitored stacks from the `monitored-stacks` folder
-module "example_1" {
-  source = "./monitored-stacks/example-1/preview-stacks"
+locals {
+  monitored_stacks = distinct(flatten([for _, v in flatten(fileset(path.module, "./monitored-stacks/**")) : regex("./monitored-stacks//([^/]).", dirname(v))]))
+}
 
-  push_policy_id = spacelift_policy.push.id
+module "monitored_stack" {
+  for_each = local.monitored_stacks
 
-  # aws_role            = var.aws_role
-  current_stack_id = var.spacelift_stack_id
-  # domain_name         = "hello-service.preview-environments.${var.domain_name}"
-  # domain_name_zone_id = data.aws_route53_zone.liftspace.zone_id
+  source = "${each.value}/preview-stacks"
 
   providers = {
-    #   aws.eu-west-1 = aws.eu-west-1
-    #   aws.us-east-1 = aws.us-east-1
     spacelift = spacelift
   }
 }
 
-# data "aws_route53_zone" "liftspace" {
-#   provider = aws.us-east-1
-
-#   name = "${var.domain_name}."
-# }
+output "debug" {
+  value = local.monitored_stacks
+}

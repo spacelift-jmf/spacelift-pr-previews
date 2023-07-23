@@ -25,7 +25,6 @@ resource "spacelift_stack_destructor" "preview" {
 
   depends_on = [
     spacelift_environment_variable.pr_preview_id,
-    # spacelift_policy_attachment.push,
   ]
 }
 
@@ -35,8 +34,3 @@ resource "spacelift_environment_variable" "pr_preview_id" {
   value      = var.preview_id
   write_only = false
 }
-
-# resource "spacelift_policy_attachment" "push" {
-#   policy_id = var.push_policy_id
-#   stack_id  = spacelift_stack.example_1.id
-# }
