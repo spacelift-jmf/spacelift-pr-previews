@@ -2,6 +2,7 @@ resource "spacelift_stack" "preview" {
   administrative               = true
   autodeploy                   = true
   branch                       = var.branch
+  github_action_deploy         = false
   name                         = "Demo Preview Environments Example 1 ${var.environment}"
   project_root                 = "simple-example/"
   repository                   = "spacelift-pr-previews-example"
