@@ -1,4 +1,4 @@
-variable "pr_branch" {
+variable "branch" {
   description = "Branch name for the PR"
   type        = string
 }

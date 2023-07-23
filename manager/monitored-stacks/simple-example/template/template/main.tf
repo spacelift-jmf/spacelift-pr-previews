@@ -1,15 +1,17 @@
 resource "spacelift_stack" "preview" {
-  administrative = true
-  autodeploy     = true
-  branch         = var.pr_branch
-  name           = "Demo Preview Environments Example 1 ${var.environment}"
-  repository     = "spacelift-pr-previews-example"
-  space_id       = "legacy"
+  administrative               = true
+  autodeploy                   = true
+  branch                       = var.branch
+  name                         = "Demo Preview Environments Example 1 ${var.environment}"
+  project_root                 = "simple-example/"
+  repository                   = "spacelift-pr-previews-example"
+  space_id                     = "legacy"
+  terraform_smart_sanitization = true
 
   labels = [
     "pr-preview",
-  #   "preview-environment-managed-by:${var.manager_stack_id}",
-  #   "preview_environment_id:${var.environment}"
+    #   "preview-environment-managed-by:${var.manager_stack_id}",
+    #   "preview_environment_id:${var.environment}"
   ]
 }
 
@@ -17,13 +19,13 @@ resource "spacelift_stack_destructor" "example_1" {
   stack_id = spacelift_stack.preview.id
 
   # depends_on = [
-    # spacelift_aws_role.hello-service,
-    # spacelift_environment_variable.aws_role,
-    # spacelift_environment_variable.certificate_arn,
-    # spacelift_environment_variable.code_version,
-    # spacelift_environment_variable.domain_name,
-    # spacelift_environment_variable.environment,
-    # spacelift_policy_attachment.push,
+  # spacelift_aws_role.hello-service,
+  # spacelift_environment_variable.aws_role,
+  # spacelift_environment_variable.certificate_arn,
+  # spacelift_environment_variable.code_version,
+  # spacelift_environment_variable.domain_name,
+  # spacelift_environment_variable.environment,
+  # spacelift_policy_attachment.push,
   # ]
 }
 
