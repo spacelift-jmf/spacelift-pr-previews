@@ -1,6 +1,6 @@
 # TODO: Dynamically list the monitored stacks from the `monitored-stacks` folder
 module "example_1" {
-  source = "./monitored-stacks/example-1"
+  source = "./monitored-stacks/example-1/previews"
 
   push_policy_id = spacelift_policy.push.id
 
