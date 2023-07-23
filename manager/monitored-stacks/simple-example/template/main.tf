@@ -4,7 +4,7 @@ resource "spacelift_stack" "preview" {
   branch                       = var.branch
   github_action_deploy         = false
   labels                       = ["pr-preview"]
-  name                         = "PR Preview - Example 1 ${var.preview_id}"
+  name                         = "PR Preview - Simple Example (${var.preview_id})"
   project_root                 = "simple-example/"
   repository                   = "spacelift-pr-previews-example"
   space_id                     = "legacy"
