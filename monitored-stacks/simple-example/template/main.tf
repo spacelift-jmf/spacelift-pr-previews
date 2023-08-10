@@ -34,3 +34,14 @@ resource "spacelift_environment_variable" "pr_preview_id" {
   value      = var.preview_id
   write_only = false
 }
+
+resource "spacelift_policy" "pr_approval_is_required" {
+  body = file("${path.module}/policies/pr-approval-is-required.rego")
+  name = "PR approval is required"
+  type = "APPROVAL"
+}
+
+resource "spacelift_policy_attachment" "pr_approval_is_required" {
+  policy_id = spacelift_policy.pr_approval_is_required.id
+  stack_id  = spacelift_stack.preview.id
+}
