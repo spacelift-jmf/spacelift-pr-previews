@@ -1,12 +1,27 @@
-module "name" {
+# Resources shared by the preview stacks would go below
+# and can be passed to the included modules.
+
+# Monitored stack inclusions go below
+module "simple_example" {
   source = "./simple-example/preview-stacks"
 
-  policy_ids = var.policy_ids
-  space_id   = var.space_id
+  aws_cloud_integration_id = var.aws_cloud_integration_id
+  policy_ids               = var.policy_ids
+  space_id                 = var.space_id
 
   providers = {
     spacelift = spacelift
   }
 }
 
-# Resources shared by the preview stacks would go below
+module "aws_example" {
+  source = "./aws-example/preview-stacks"
+
+  aws_cloud_integration_id = var.aws_cloud_integration_id
+  policy_ids               = var.policy_ids
+  space_id                 = var.space_id
+
+  providers = {
+    spacelift = spacelift
+  }
+}

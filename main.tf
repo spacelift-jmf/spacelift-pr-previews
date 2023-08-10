@@ -13,6 +13,7 @@ resource "spacelift_policy" "push" {
 module "monitored_stacks" {
   source = "./monitored-stacks"
 
+  aws_cloud_integration_id = var.aws_cloud_integration_id
   policy_ids = {
     approval = spacelift_policy.approval.id,
     push     = spacelift_policy.push.id
