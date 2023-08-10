@@ -7,7 +7,7 @@ resource "spacelift_stack" "preview" {
   name                         = "PR Preview - Simple Example (${var.preview_id})"
   project_root                 = "simple-example/"
   repository                   = "spacelift-pr-previews-example"
-  space_id                     = "legacy"
+  space_id                     = var.space_id
   terraform_smart_sanitization = true
 }
 
@@ -35,13 +35,9 @@ resource "spacelift_environment_variable" "pr_preview_id" {
   write_only = false
 }
 
-resource "spacelift_policy" "pr_approval_is_required" {
-  body = file("${path.module}/policies/pr-approval-is-required.rego")
-  name = "PR approval is required"
-  type = "APPROVAL"
-}
+resource "spacelift_policy_attachment" "policies" {
+  for_each = var.policy_ids
 
-resource "spacelift_policy_attachment" "pr_approval_is_required" {
-  policy_id = spacelift_policy.pr_approval_is_required.id
+  policy_id = each.value
   stack_id  = spacelift_stack.preview.id
 }

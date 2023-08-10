@@ -4,7 +4,7 @@ This is an example of how to automatically create preview environments for PRs.
 
 ## Usage
 
-- Create an administrative stack associated with this repository.
+- Create an administrative stack associated with this repository, with atuo-deploy enabled.
 
 ## TODO
 
